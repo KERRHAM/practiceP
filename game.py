@@ -1,6 +1,6 @@
 print("Welcome user")
 
-playing = input("Do you want to play? ")
+playing = input("Do you want to play? ").lower()
 
 if playing != "yes":
     quit()
