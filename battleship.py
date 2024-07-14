@@ -36,26 +36,41 @@ def start_game(strike_attempts):
         break
     return strike
 
-def check_strike(strike, boat1, hit, miss, comp):
+def check_strike(strike, boat1, boat2, hit, miss, comp):
 
     if strike in boat1:
         boat1.remove(strike)
         if len(boat1) > 0:
             hit.append(strike)
+            print("Hit!!")
+        else:
+            comp.append(strike)
+    elif strike in boat2:
+        boat2.remove(strike)
+        if len(boat2) > 0:
+            hit.append(strike)
+            print("Hit!!")
         else:
             comp.append(strike)
     else:
         miss.append(strike)
-        
-        return boat1, hit, miss, comp
+        print("Miss!!!")
+    
+    
+    return boat1, boat2, hit, miss, comp
 
-for i in range(5):
+for i in range(10):
     strike_attempts = hit + miss + comp
     strike = start_game(strike_attempts)
-    check_strike(strike, boat1, hit, miss, comp)
+    check_strike(strike, boat1, boat2, hit, miss, comp)
     show_board(hit, miss, comp)
 
-    if len(boat1) < 1:
+    if len(boat1) < 1 and len(boat2) < 1:
         print("Well done, you sunk my battleship!!!")
+        print("Click Run to play again.")
         break
+
+
+
+
     
