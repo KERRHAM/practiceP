@@ -1,4 +1,25 @@
+introduction =  """
+    Welcome Sailer, your task is to sink the enemys 3 Battleship's in under 20 shots, 
+    To exit the game enter quit to terminal.
+    """
+print(introduction)
+start = input("Are you ready to set sail and attack? ").lower()
+
+if start == "no":
+    quit()
+
+boat1 = [25, 35, 45]
+boat2 = [1, 2, 3]
+boat3 = [99, 89, 79]
+
+hit = []
+miss = []
+comp = []
+
+
 def show_board(hit,miss,comp):  
+    
+
     print("           Battleship!!!")
     print("     0  1  2  3  4  5  6  7  8  9")
 
@@ -17,12 +38,6 @@ def show_board(hit,miss,comp):
             place = place + 1
         print(x," ", row)
 
-boat1 = [25, 35, 45]
-boat2 = [61, 62, 63]
-hit = []
-miss = []
-comp = []
-
 def start_game(strike_attempts):
 
     while True:
@@ -37,7 +52,7 @@ def start_game(strike_attempts):
     return strike
 
 def check_strike(strike, boat1, boat2, hit, miss, comp):
-
+    
     if strike in boat1:
         boat1.remove(strike)
         if len(boat1) > 0:
@@ -53,9 +68,8 @@ def check_strike(strike, boat1, boat2, hit, miss, comp):
         else:
             comp.append(strike)
     else:
-        miss.append(strike)
-        print("Miss!!!")
-    
+       miss.append(strike)
+       print("Miss!!!")
     
     return boat1, boat2, hit, miss, comp
 
@@ -65,12 +79,14 @@ for i in range(10):
     check_strike(strike, boat1, boat2, hit, miss, comp)
     show_board(hit, miss, comp)
 
-    if len(boat1) < 1 and len(boat2) < 1:
-        print("Well done, you sunk my battleship!!!")
+    if len(boat1) < 1:
+        print("1 down 1 to go!!")
+
+    if len(boat2) < 1:
+        print("Well done, you sunk my battleship's!!!")
         print("Click Run to play again.")
         break
 
 
-
-
-    
+print(f"Hit's {hit_Counter}")
+print(f"Misses {miss_Counter}")
