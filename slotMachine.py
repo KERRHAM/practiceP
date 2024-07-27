@@ -72,8 +72,16 @@ def display_slot_machine(columns):
 
     
 def deposit():
+    print(
+        '''
+        Welcome user are you ready to play the slotmachine??
+        To play deposit a minimum of £1 to win yourself some tokens!!
+        '''
+    )
+
+
     while True:
-        amount = input("How much would you like to deposit? £")
+        amount = input("How much would you like to deposit to play? £")
         if amount.isdigit():
             amount = int(amount)
             if amount > 0:
@@ -88,7 +96,7 @@ def deposit():
 def get_number_of_lines():
 
     while True:
-        lines = input("Please enter the number of lines you would like to bet on (1-" + str(MAX_LINES) + ")? ")
+        lines = input("Please enter the number of lines you would like to deposit your money on? (1-" + str(MAX_LINES) + ")? ")
         if lines.isdigit():
             lines = int(lines)
             if 1 <= lines <= MAX_LINES:
@@ -101,8 +109,18 @@ def get_number_of_lines():
     return lines
 
 def get_bet():
+
+    print(
+        '''
+        The slot machine has 3 lines with 4 Symbols, A B C & D
+        Value A will Multiply your bet by 5
+        Value B will Multiply your bet by 4
+        Value C will Multiply your bet by 3
+        Value D will Multiply your bet by 2
+        '''
+    )
     while True:
-        amount = input("How much would you like to bet on each line? £")
+        amount = input("How much would you like to deposit on each line? £")
         if amount.isdigit():
             amount = int(amount)
             if MIN_BET <= amount <= MAX_BET <=100:
@@ -131,7 +149,7 @@ def spin(balance):
     slot = spin_slot_machine(rows, cols, symbol_count) 
     display_slot_machine(slot)
     winnings, winning_lines = check_winnings(slot, lines, bet, symbol_value)
-    print(f"You won £{winnings}.")
+    print(f"You won {winnings} Tokens!!.")
     print(f"you won on lines:", *winning_lines)
     return winnings - total_bet
 
@@ -144,7 +162,7 @@ def main():
             break
         balance += spin(balance)
     
-    print(f"You left with {balance}")
+    print(f"You left with {balance} Token's")
 
 
 main()
