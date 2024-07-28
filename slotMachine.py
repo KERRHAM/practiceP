@@ -143,6 +143,7 @@ def spin(balance):
             print(f"You dont have enough funds to place this bet, Your current balance is: £{balance}")
         else:
             break
+            
     
     print(f"you are betting £{bet} on {lines} lines, your total bet is equal to: £{total_bet}")
 
@@ -155,7 +156,7 @@ def spin(balance):
 
 def main():
     balance = deposit()
-    while True:
+    while balance >= 1:
         print(f"Current balance is £{balance}")
         result = input("Press enter to Play (Press q to quit) ")
         if result == "q":
@@ -163,6 +164,6 @@ def main():
         balance += spin(balance)
     
     print(f"You left with {balance} Token's")
-
+    print("To play again, Click run and deposit more funds.")
 
 main()
